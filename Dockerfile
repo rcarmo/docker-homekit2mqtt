@@ -35,7 +35,7 @@ RUN npm config set prefix=/home/user/.npm-packages \
     homekit2mqtt
 
 VOLUME /home/user/.config/homekit2mqtt
-ENV MQTT_URL=mqtt://127.0.0.1
+ENV MQTT_URL=mqtt://127.0.0.1 VERBOSITY=info
 CMD /start.sh
 
 ARG VCS_REF
