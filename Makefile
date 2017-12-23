@@ -7,6 +7,7 @@ else
 export BASE=ubuntu:16.04
 endif
 export MQTT_URL?=mqtt://127.0.0.1
+export VERBOSITY?=info
 export HOSTNAME?=homekit2mqtt
 export DATA_FOLDER=$(HOME)/.config/homekit2mqtt
 export VCS_REF=`git rev-parse --short HEAD`
@@ -39,6 +40,7 @@ daemon:
 	docker run -v $(DATA_FOLDER):/home/user/.config/homekit2mqtt \
 		-v /var/run/dbus:/var/run/dbus \
 		-e MQTT_URL=$(MQTT_URL) \
+		-e VERBOSITY=$(VERBOSITY) \
 		--net=host --name $(HOSTNAME) -d --restart unless-stopped $(IMAGE_NAME):$(ARCH)
 
 clean:
